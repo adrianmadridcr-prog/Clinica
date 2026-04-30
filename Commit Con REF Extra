@@ -1,0 +1,39 @@
+public class Clinica {
+
+    private GestorLog gestorLog = new GestorLog();
+
+    private boolean validarPaciente(String paciente) {
+        if (paciente == null || paciente.isEmpty()) {
+            System.out.println("ERROR: Paciente no válido");
+            return false;
+        }
+        return true;
+    }
+
+    public void agendarCita(String paciente, String doctor, String fecha, String tipo) {
+
+        if (!validarPaciente(paciente)) return;
+
+        System.out.println("Cita agendada para " + paciente + " con el Dr. " + doctor);
+
+        gestorLog.registrar();
+    }
+
+    public void cancelarCita(String paciente, String fecha) {
+
+        if (!validarPaciente(paciente)) return;
+
+        System.out.println("Cita cancelada para " + paciente);
+
+        gestorLog.registrar();
+    }
+
+    public void emitirReceta(String paciente, String medicamento) {
+
+        if (!validarPaciente(paciente)) return;
+
+        System.out.println("Receta de " + medicamento + " para " + paciente);
+
+        gestorLog.registrar();
+    }
+}
